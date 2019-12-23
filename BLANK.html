@@ -1,0 +1,138 @@
+<html>
+<head>
+<title> LAME </title>
+<body bgcolor="#000000">
+
+<center>
+	<canvas id="mycanvas"></canvas>
+<script type="text/javascript" src="SOUND/script/soundmanager2.js"></script>
+<script type="text/javascript" src="SOUND/script/loadsoundchrome.js"></script>
+<script src="processing-1.4.8.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+/* @pjs globalKeyEvents = "true"; */
+
+PImage deathStar;
+PImage falcon;
+
+PImage[] ties = new PImage [3];
+int[] tiesX = new int [3];
+int[] tiesY = new int [3];
+
+int falconX, falconY;
+bool left, right, up, down;
+
+void setup() {
+
+	size(800,800);
+	frameRate(60);
+	
+	orator = loadFont("Orator Std");
+	
+	deathStar = loadImage("IMAGES/STAR.jpg");
+	falcon = loadImage("IMAGES/FALCON.jpg");
+
+	ties[0] = loadImage("IMAGES/TIE.jpg");
+	ties[1] = loadImage("IMAGES/TIE.jpg");
+	ties[2] = loadImage("IMAGES/TIE.jpg");
+
+	falconX = 325, falconY = 550;
+
+	left = true, right = true, up = true, down = true;
+}
+
+
+void draw() {
+	background(0,0,0);
+
+	image(deathStar, 0, 0, 800, 800);
+
+	boundaryCheck();
+
+	image(falcon, falconX, falconY, 75, 75);
+
+	tieFighters();
+	tie1();
+
+/*
+	fill(80,80,80);
+	textFont(orator, 32);
+	text("fuck you dude", 50, 50);
+*/	
+
+}
+
+void tieFighters() {
+
+	
+}
+
+void tie1() {
+	int x = 50, y = 50, inc = 25;
+	image(ties[0], x, y, x+inc, y+inc);	
+/*
+	for (int i = 1; i < 4; i++){
+		x *= i;
+		y *= i;
+		image(tie[0], x, y, x+inc, y+inc);
+	}
+*/
+
+}
+
+void boundaryCheck(){
+	if (falconX < 0)
+		falconX = 0;
+	
+	else if (falconX > 750)
+		falconX = 750;
+
+	if (falconY < 0)
+		falconY = 0;
+
+	else if (falconY > 750)
+		falconY = 750;
+}
+
+void fireMissle() {
+	float temp = falconX + 27.5;
+
+	for(int boop = falconY - 50; boop > 0; boop -= 25){
+		rect (temp, boop, 25, 50);
+	}
+	
+}
+
+void keyPressed() {
+	if (key == 'w' || key == 'W'){
+		falconY -= 25; 
+	}
+
+	else if (key == 'a' || key == 'A'){
+		falconX -= 25;
+	}	
+
+	else if (key == 's' || key == 'S'){
+		falconY += 25;
+	}
+
+	else if (key == 'd' || key ==  'D'){
+		falconX += 25;
+	}
+
+	if (keyCode == ENTER){
+
+		fireMissle();
+	
+	}
+
+}
+
+</script>
+
+
+
+
+</body>
+</html>
+

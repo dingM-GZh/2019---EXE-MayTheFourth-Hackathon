@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>asdfasdf</title>
+<center>
+
+<input type="click" onkeypress="rotateFalcon()"> 
+
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+/* @pjs globalKeyEvents = "true"; */
+
+PImage deathStar;
+PImage falcon;
+float angle;
+float jitter;
+
+void setup ()
+{
+	size(800,800);
+	frameRate(60);
+	
+	orator = loadFont("Orator Std");
+	
+	deathStar = loadImage("IMAGES/STAR.jpg");
+	falcon = loadImage("IMAGES/falcon.jpg");
+	//rectMode(CENTER);
+	//image(falcon,200,200,100,100);
+}
+
+
+void draw()
+{
+	background(0,0,0);
+	
+	rotate(0);
+	image(deathStar, 0, 0, 800, 800);
+if (second() % 2 == 0) {  
+    jitter = random(-0.1, 0.1);
+  }
+  angle = angle + jitter;
+  float c = cos(angle);
+  translate(width/2, height/2);
+  rotate(c);
+  image(falcon,0, 0, 180, 180);  
+
+	
+	
+}
+
+void moveFalcon() {
+
+
+}
+
+
+function rotateFalcon()
+{
+
+}
+
+
+void keyPressed() {
+
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+
+<body>
+
+</body>
+</html>
+

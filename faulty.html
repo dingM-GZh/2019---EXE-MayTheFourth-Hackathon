@@ -1,0 +1,45 @@
+<html>
+<head>
+<title> NOOP NOOP </title>
+<body bgcolor="#000000">
+
+<center>
+	<canvas id="mycanvas"></canvas>
+	<script type="text/javascript" src="SOUND/script/soundmanager2.js"></script>
+<script type="text/javascript" src="SOUND/script/loadsoundchrome.js"></script>
+<script src="processing-1.4.8.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+/* @pjs globalKeyEvents = "true"; */
+
+PImage splash;
+
+void setup() {
+
+	size(800,800);
+	frameRate(60);
+	
+	orator = loadFont("Orator Std");
+	
+	splash = loadImage("IMAGES/SPLASH.jpg");
+
+	//soundManager.play('s0');
+}
+
+
+void draw() {
+	background(0,0,0);
+
+	image(splash, 0, 0, 800, 800);
+	
+}
+
+void keyPressed() {
+	
+	link("BLANK.html");
+}
+
+</script>
+</body>
+</html>
+
